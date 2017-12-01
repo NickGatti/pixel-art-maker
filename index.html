@@ -13,9 +13,11 @@
     <body>
         <div class="wrapper">
         </div>
-        <div class="colorPickerDiv">
+        <div id="colorPickerDiv">
             <input type="color" id="colorWell">
+            <input type="button" id="resetGrid" value="Reset">
         </div>
+
     </body>
     <script type="text/javascript">
         let colorWell;
@@ -46,7 +48,6 @@
             })
         }
 
-
         window.addEventListener("load", startup, false);
 
         function startup() { 
@@ -54,6 +55,13 @@
             colorWell.value = defaultColor; 
             colorWell.select();
         }
+
+        let gridFlag = false
+
+        $('#resetGrid').click(function() {
+            gridFlag ? $('.pixel').css('border', '1px solid black') : $('.pixel').css('border', '0px')
+            gridFlag = !gridFlag
+        })
     </script>
 
 </html>
