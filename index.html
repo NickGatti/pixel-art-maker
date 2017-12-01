@@ -13,47 +13,46 @@
     <body>
         <div class="wrapper">
         </div>
-        <label for="colorWell">Color:</label>
-        <input type="color" value="#ff0000" id="colorWell">
+        <div class="colorPickerDiv">
+            <input type="color" id="colorWell">
+        </div>
     </body>
     <script type="text/javascript">
         let colorWell;
-        let defaultColor = "#000000";
+        let defaultColor = "#0000ff";
 
-        for (let i = 0; i < 41; i++) {
+        let hgt = ($('.wrapper').height()) / 10
+
+        let wid = ($('.wrapper').width()) / 10
+
+        for (let i = 0; i < hgt; i++) {
             $('.wrapper').append('<div class="pixel floatL"></div>')
-            console.log('hello');
-            for (var z = 0; z < 41; z++) {
+            for (var z = 0; z < wid; z++) {
                 $('.wrapper').append('<div class="pixel floatL"></div>')
             }
         }
 
-        $('.pixel').click(function() {
+        $('.pixel').mousedown(function() {
             $(this).css('background-color', colorWell.value)
+            $(this).mouseout(checkOut)
         })
+
+        function checkOut() {
+            $('.pixel').mouseover(function() {
+                $(this).css('background-color', colorWell.value)
+            })
+            $('html').mouseup(function() {
+                $('.pixel').off('mouseover')
+            })
+        }
+
 
         window.addEventListener("load", startup, false);
 
         function startup() { 
             colorWell = document.querySelector("#colorWell"); 
             colorWell.value = defaultColor; 
-            colorWell.addEventListener("input", updateFirst, false); 
-            colorWell.addEventListener("change", updateAll, false);
             colorWell.select();
-        }
-
-        function updateFirst(event) {
-            var p = document.querySelector("p");
-
-            if (p) {
-                p.style.color = event.target.value;
-            }
-        }
-
-        function updateAll(event) {
-            document.querySelectorAll("p").forEach(function(p) {
-                p.style.color = event.target.value;
-            });
         }
     </script>
 

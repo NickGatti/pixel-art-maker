@@ -4,8 +4,8 @@
 
 .wrapper {
     background-color: black;
-    width: 420px;
-    height: 10px;
+    width: 100vw;
+    height: 100vh;
     box-sizing: border-box;
 }
 
@@ -20,4 +20,11 @@
 .floatL {
     float: left;
     box-sizing: border-box;
+}
+
+#colorWell {
+    position: fixed;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
 }
