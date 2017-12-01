@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title></title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="/css/master.css">
+        <link rel="stylesheet" href="./css/master.css">
         <style media="screen">
         </style>
     </head>
@@ -16,9 +16,10 @@
     </body>
     <script type="text/javascript">
         for (let i = 0; i < 41; i++) {
-            $('wrapper').append('<div class="pixel"</div')
+            $('.wrapper').append('<div class="pixel floatL"></div>')
+            console.log('hello');
             for (var z = 0; z < 41; z++) {
-                $('wrapper').append('<div class="pixel"</div')
+                $('.wrapper').append('<div class="pixel floatL"></div>')
             }
         }
     </script>
