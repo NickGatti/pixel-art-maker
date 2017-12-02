@@ -15,7 +15,7 @@
         </div>
         <div id="colorPickerDiv">
             <input type="color" id="colorWell">
-            <input type="button" id="resetGrid" value="Reset">
+            <input type="button" id="resetGrid" value="Toggle Grid">
         </div>
 
     </body>
@@ -23,13 +23,25 @@
         let colorWell;
         let defaultColor = "#0000ff";
 
-        let hgt = ($('.wrapper').height()) / 10
+        let divideByTen = (num) => {
+            while (num % 10) {
+                num--
+            }
+            return num
+        }
 
-        let wid = ($('.wrapper').width()) / 10
+        let hgt = divideByTen((($('.wrapper').height()) / 10).toFixed(0))
+        let wid = divideByTen((($('.wrapper').width()) / 10).toFixed(0))
 
-        for (let i = 0; i < hgt; i++) {
+        $('.wrapper').css('height', (hgt * 10) + 'px')
+        $('.wrapper').css('width', (wid * 10) + 'px')
+
+        let wrapWid = hgt % wid
+        let wrapHgt = wid % hgt
+
+        for (let i = 1; i < hgt; i++) {
             $('.wrapper').append('<div class="pixel floatL"></div>')
-            for (var z = 0; z < wid; z++) {
+            for (var z = 1; z < wid; z++) {
                 $('.wrapper').append('<div class="pixel floatL"></div>')
             }
         }
