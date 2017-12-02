@@ -34,14 +34,19 @@
             }
         }
 
+        let lastPixel;
         $('.pixel').mousedown(function() {
             $(this).css('background-color', colorWell.value)
             $(this).mouseout(checkOut)
+            lastPixel = $(this)
         })
 
         function checkOut() {
+            lastPixel.off('mousedown')
+            lastPixel.off('mouseover')
             $('.pixel').mouseover(function() {
                 $(this).css('background-color', colorWell.value)
+                lastPixel = $(this)
             })
             $('html').mouseup(function() {
                 $('.pixel').off('mouseover')
@@ -59,7 +64,7 @@
         let gridFlag = false
 
         $('#resetGrid').click(function() {
-            gridFlag ? $('.pixel').css('border', '1px solid black') : $('.pixel').css('border', '0px')
+            gridFlag ? $('.pixel').css('outline', '1px solid lightgrey') : $('.pixel').css('outline', '0px')
             gridFlag = !gridFlag
         })
     </script>
